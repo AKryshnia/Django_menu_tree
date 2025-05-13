@@ -1,0 +1,26 @@
+{% load menu_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <style>
+        ul { list-style-type: none; padding-left: 20px; }
+        li.active > a { font-weight: bold; color: red; }
+    </style>
+</head>
+<body>
+    <h1>Все меню, найденные в базе</h1>
+
+    {% get_menu_names as all_menus %}
+
+    {% for name in all_menus %}
+        <section>
+            <h2>Меню: {{ name }}</h2>
+            {% draw_menu name %}
+        </section>
+    {% empty %}
+        <p>Нет доступных меню в базе.</p>
+    {% endfor %}
+</body>
+</html>

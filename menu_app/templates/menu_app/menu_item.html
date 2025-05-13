@@ -1,0 +1,11 @@
+<li{% if item.is_active %} class="active"{% endif %}>
+    <a href="{{ item.get_url }}">{{ item.name }}</a>
+
+    {% if item.children_list and item.is_expanded %}
+        <ul>
+            {% for child in item.children_list %}
+                {% include "menu_app/menu_item.html" with item=child %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>
